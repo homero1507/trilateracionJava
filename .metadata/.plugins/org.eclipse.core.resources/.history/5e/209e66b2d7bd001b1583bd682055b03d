@@ -1,0 +1,54 @@
+package Servicios;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import dto.ResponseDto;
+import dto.SateliteRequestDto;
+
+public class TopSecretHandler implements RequestHandler<Object, String> {
+
+	private LambdaLogger logger;
+	private Gson gson = new Gson();
+
+	public String handleRequest(Object input, Context context) {
+		ResponseDto response = procesarPeticion(input);
+		String respuestaJSON = gson.toJson(response);
+		logger.log(respuestaJSON);
+		return respuestaJSON;
+	}
+
+	private ResponseDto procesarPeticion(Object input) {
+		ResponseDto response = new ResponseDto();
+
+		Object obj = JSONValue.parse(gson.toJson(input));
+
+		JSONObject jsonObject = (JSONObject) obj;
+		String body = (String) jsonObject.get("body");
+		JSONObject jsonContext = (JSONObject) jsonObject.get("requestContext");
+		JSONObject http = (JSONObject) jsonContext.get("http");
+		String metodoHttp = (String) http.get("method");
+
+		if ("POST".equals(metodoHttp)) {
+			response = procesarPost(body);
+		
+		}
+		return response;
+	}
+
+	private ResponseDto procesarPost(String body) {
+		Type promotionsType = new TypeToken<ArrayList<SateliteRequestDto>>() {
+		}.getType();
+
+	}
+
+}

@@ -1,0 +1,1 @@
+{"lastDeploymentHandler":"Servicios.TopSecretHandler","lastInvokeHandler":null,"handlerMetadata":{"Servicios.TopSecretHandler":{"deployment":{"regionId":"us-east-1","awsLambdaFunctionName":"testTrilateracionFunction","awsIamRoleName":"lambda-role","awsS3BucketName":"desarrollo-innova","memory":0,"timeout":0},"invoke":null}},"lastInvokedHandlerDeployed":false}

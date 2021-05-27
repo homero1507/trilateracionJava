@@ -1,0 +1,92 @@
+package dto;
+
+public class Satelite {
+
+	/**
+	 * identificado unico para el satelite
+	 */
+	private Long idSatelite;
+
+	/**
+	 * nombre del satelite
+	 */
+	private String name;
+
+	/**
+	 * descripcion del satelite
+	 */
+	private String description;
+
+	/**
+	 * posicion en el eje X
+	 */
+	private Float xPosition;
+
+	/**
+	 * posicion en el eje Y
+	 */
+	private Float yPosition;
+
+	public Satelite(Long idSatelite, String name, String description, Float xPosition, Float yPosition) {
+		super();
+		this.idSatelite = idSatelite;
+		this.name = name;
+		this.description = description;
+		this.xPosition = xPosition;
+		this.yPosition = yPosition;
+	}
+
+	public Satelite() {
+		super();
+		this.idSatelite = 0L;
+		this.xPosition = 0F;
+		this.yPosition = 0F;
+	}
+
+	public Long getIdSatelite() {
+		return idSatelite;
+	}
+
+	public void setIdSatelite(Long idSatelite) {
+		this.idSatelite = idSatelite;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Float getxPosition() {
+		return xPosition;
+	}
+
+	public void setxPosition(Float xPosition) {
+		this.xPosition = xPosition;
+	}
+
+	public Float getyPosition() {
+		return yPosition;
+	}
+
+	public void setyPosition(Float yPosition) {
+		this.yPosition = yPosition;
+	}
+
+	@Override
+	public String toString() {
+		return "Satelite [idSatelite=" + idSatelite + ", name=" + name + ", description=" + description + ", xPosition="
+				+ xPosition + ", yPosition=" + yPosition + "]";
+	}
+
+}

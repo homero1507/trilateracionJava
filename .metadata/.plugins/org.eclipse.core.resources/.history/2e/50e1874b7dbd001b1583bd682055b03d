@@ -1,0 +1,7 @@
+package Servicios;
+
+import com.amazonaws.handlers.RequestHandler;
+
+public class TopSecretHandler implements RequestHandler {
+
+}

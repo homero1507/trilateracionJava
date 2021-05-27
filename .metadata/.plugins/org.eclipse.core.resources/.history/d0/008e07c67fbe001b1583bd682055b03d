@@ -1,0 +1,10 @@
+package dto;
+
+import java.util.List;
+import java.io.Serializable;
+
+public class RequestDto implements Serializable {
+
+	private List<SateliteRequestDto> satellites;
+
+}

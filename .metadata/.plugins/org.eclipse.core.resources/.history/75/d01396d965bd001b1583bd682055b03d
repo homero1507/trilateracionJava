@@ -1,0 +1,30 @@
+package util;
+
+import static org.junit.Assert.*;
+
+import java.util.logging.Logger;
+
+import org.junit.Test;
+
+import dto.ResponseDto;
+
+public class TrilateracionTest {
+
+	Logger log = Logger.getLogger(this.getClass().getCanonicalName());
+
+	@Test
+	public void primerMensajeUbicacion() {
+		ResponseDto res = Trilateracion.getInstance().getLocation(100D);
+	}
+
+	@Test
+	public void segundoMensajeUbicacion() {
+		ResponseDto res = Trilateracion.getInstance().getLocation(115.5D);
+	}
+
+	@Test
+	public void tercerMensajeUbicacion() {
+		ResponseDto res = Trilateracion.getInstance().getLocation(142.7D);
+	}
+
+}

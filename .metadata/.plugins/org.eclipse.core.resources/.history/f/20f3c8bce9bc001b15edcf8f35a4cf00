@@ -1,0 +1,58 @@
+package dto;
+
+import java.io.Serializable;
+
+/**
+ * 
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class ResponseDto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -177538914806616410L;
+
+	/**
+	 * mensaje recibido
+	 */
+	private String mensaje;
+
+	private PositionDto position;
+
+	public ResponseDto(String mensaje, Float xPosition, Float yPosition) {
+		super();
+		this.mensaje = mensaje;
+		this.position = new PositionDto(xPosition, yPosition);
+	}
+
+	public ResponseDto() {
+		super();
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	public PositionDto getPosition() {
+		return position;
+	}
+
+	public void setPosition(PositionDto position) {
+		this.position = position;
+	}
+
+	@Override
+	public String toString() {
+		return "ResponseDto [mensaje=" + mensaje + ", position=" + position + "]";
+	}
+
+}

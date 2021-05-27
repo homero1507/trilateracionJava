@@ -1,0 +1,15 @@
+package dto;
+
+import java.io.Serializable;
+
+public class SateliteRequestDto implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -39593651236139482L;
+	private String name;
+	private Double distance;
+	private String[] menssage;
+	
+}

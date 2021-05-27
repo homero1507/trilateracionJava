@@ -1,0 +1,66 @@
+package util;
+
+import java.util.Map;
+import java.util.Objects;
+
+import dto.PositionDto;
+import dto.ResponseDto;
+import dto.SateliteDto;
+
+/**
+ * Clase que aplica el algoritmo de trilateracion para calcular la posicion de
+ * un objeto
+ * 
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class Trilateracion {
+
+	/**
+	 * map que contendra los satelites disponibles
+	 */
+	private Map<String, SateliteDto> satelites;
+
+	/**
+	 * Metodo que calcula la posicion de un objeto en el plano XY, basado en la
+	 * distancia de este a N puntos datos, por definicion se recomienda minimo 3
+	 * puntos conocidos, para exactitud Al ser imposible determinar la posicion solo
+	 * con las distancias, se necesitan tambien los puntos, se modifica el metodo
+	 * para que recibe tambien la ubicacion, esto es un satelite.
+	 * 
+	 * @param distancias
+	 * @return
+	 */
+	public ResponseDto getLocation(SateliteDto... satelites) {
+		ResponseDto responseDto = new ResponseDto();
+		if (Objects.isNull(satelites) || satelites.length < 3) {
+			responseDto.setMensaje("ERROR: No se puede determinar la ubicación, falta información");
+		}
+
+		return responseDto;
+	}
+
+	/**
+	 * Calcula la distancia entre dos posiciones
+	 * 
+	 * @param p1
+	 * @param p2
+	 * @return
+	 */
+	private float calcularDistancia(PositionDto p1, PositionDto p2) {
+
+		float dx = p2.getxPosition() - p1.getxPosition();
+		float dy = p2.getyPosition() - p1.getyPosition();
+
+		return 0F;
+	}
+
+	public String GetMessage(String... messages) {
+
+		return null;
+	}
+
+}

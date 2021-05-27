@@ -1,0 +1,46 @@
+package dto;
+
+import java.io.Serializable;
+import java.util.Arrays;
+
+public class SateliteRequestDto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -39593651236139482L;
+	private String name;
+	private Double distance;
+	private String[] menssage;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
+
+	public String[] getMenssage() {
+		return menssage;
+	}
+
+	public void setMenssage(String[] menssage) {
+		this.menssage = menssage;
+	}
+
+	@Override
+	public String toString() {
+		return "SateliteRequestDto [name=" + name + ", distance=" + distance + ", menssage=" + Arrays.toString(menssage)
+				+ "]";
+	}
+
+}

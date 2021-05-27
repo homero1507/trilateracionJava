@@ -1,0 +1,8 @@
+package dto;
+
+import java.io.Serializable;
+
+public class VehiculoEspacial implements Serializable {
+
+	
+}

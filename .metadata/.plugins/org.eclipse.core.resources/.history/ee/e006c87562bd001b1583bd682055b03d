@@ -1,0 +1,194 @@
+package util;
+
+import java.util.Map;
+import java.util.Objects;
+
+import dto.PositionDto;
+import dto.ResponseDto;
+import dto.SateliteDto;
+import enums.SatelitesEnum;
+
+/**
+ * Clase que aplica el algoritmo de trilateracion para calcular la posicion de
+ * un objeto
+ * 
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class Trilateracion {
+
+	private Trilateracion instance;
+
+	SateliteDto kenobi;
+	SateliteDto skywalker;
+	SateliteDto sato;
+
+	private void Trilateracion() {
+		kenobi = null;
+		skywalker = null;
+		sato = null;
+	}
+
+	/**
+	 * Metodo que calcula la posicion de un objeto en el plano XY, basado en la
+	 * distancia de este a 3 puntos datos, por definicion se recomienda minimo 3
+	 * puntos conocidos, para exactitud. Se inician los satelites en la media que se
+	 * obtiene la informacion de las distancias
+	 * 
+	 * @param distancias
+	 * @return
+	 */
+	public ResponseDto getLocation(double distancia) {
+
+		if (Objects.isNull(kenobi)) {
+			// el toma kenobi como el primer satelite
+			kenobi = SatelitesEnum.KENOBI.getSatelite();
+			kenobi.setDistancia(distancia);
+		} else if (Objects.isNull(skywalker)) {
+			// se toma skywalker como el segundo
+			skywalker = SatelitesEnum.SKYWALKER.getSatelite();
+			skywalker.setDistancia(distancia);
+		} else if (Objects.isNull(sato)) {
+			// se toma sato como el tercero
+			sato = SatelitesEnum.SATO.getSatelite();
+			sato.setDistancia(distancia);
+		} else {
+			// si los tres tienen datos, se reinician
+			kenobi = SatelitesEnum.KENOBI.getSatelite();
+			kenobi.setDistancia(distancia);
+			skywalker = null;
+			sato = null;
+		}
+
+		ResponseDto responseDto = new ResponseDto();
+
+		if (Objects.isNull(kenobi) || Objects.isNull(skywalker) || Objects.isNull(sato)) {
+			responseDto.setCode("404");
+		}
+
+		return responseDto;
+	}
+
+	/**
+	 * basado en el libro 'Programming with Java: A Multimedia Approach' capitulo
+	 * 3.13.1 2D Trilateracion, pag 78
+	 * 
+	 * @param s1
+	 * @param s2
+	 * @param s3
+	 * @return
+	 */
+	private double calcularXPoint(SateliteDto s1, SateliteDto s2, SateliteDto s3) {
+
+		PositionDto p1 = s1.getPosition();
+		PositionDto p2 = s2.getPosition();
+		PositionDto p3 = s3.getPosition();
+
+		double py = ((p2.getxPosition() - p1.getxPosition())
+				* (exp2(p3.getxPosition()) + exp2(p3.getyPosition()) - s3.getDistancia())
+				+ (p1.getxPosition() - p3.getxPosition())
+						* (exp2(p2.getxPosition()) + exp2(p2.getyPosition()) - exp2(s2.getDistancia()))
+				+ (p3.getxPosition() - p2.getxPosition())
+						* (exp2(p1.getxPosition()) + exp2(p1.getyPosition()) - exp2(s1.getDistancia())))
+				/ 2
+				* ((p3.getyPosition() * (p2.getxPosition() - p1.getxPosition()))
+						+ (p2.getyPosition() * (p1.getxPosition() - p3.getxPosition()))
+						+ (p1.getyPosition() * (p3.getxPosition() - p2.getxPosition())));
+
+		return py;
+	}
+
+	/**
+	 * basado en el libro 'Programming with Java: A Multimedia Approach' capitulo
+	 * 3.13.1 2D Trilateracion, pag 78
+	 * 
+	 * @param s1 satelite uno
+	 * @param s2 satelite dos
+	 * @param y  punto en el eje Y
+	 * @return
+	 */
+	private double calcularXPoint(SateliteDto s1, SateliteDto s2, double y) {
+
+		PositionDto p1 = s1.getPosition();
+		PositionDto p2 = s2.getPosition();
+
+		double px = exp2(s2.getDistancia()) + exp2(p1.getxPosition()) + exp2(p1.getyPosition())
+				- exp2(s1.getDistancia()) - exp2(p2.getxPosition()) - exp2(p2.getyPosition())
+				- (2 * (p1.getyPosition() - p2.getyPosition())) * y;
+
+		return px;
+	}
+
+	private double exp2(double d) {
+		return Math.pow(d, 2);
+	}
+
+	/**
+	 * Calcula la distancia entre dos posiciones en un plano XY
+	 * 
+	 * @param p1
+	 * @param p2
+	 * @return
+	 */
+	private double calcularDistancia(PositionDto p1, PositionDto p2) {
+
+		double dx = p2.getxPosition() - p1.getxPosition();
+		double dy = p2.getyPosition() - p1.getyPosition();
+
+		double d = Math.sqrt(Math.pow(dx, 2D) + Math.pow(dy, 2D));
+
+		return d;
+	}
+
+	/**
+	 * Valida que la circunferencias de dos satelites, con radio distancia al
+	 * emisor, se puedan intersertar, en caso contrario no se puede determinar la
+	 * ubicacion del emisor
+	 * 
+	 * @param s1
+	 * @param s2
+	 * @return
+	 */
+	private boolean validarInterseccion(SateliteDto s1, SateliteDto s2) {
+
+		double d = calcularDistancia(s1.getPosition(), s2.getPosition());
+
+		// si la distancia entre los dos satelites es mayor que las sumas de las
+		// distancias hasta le punto emisor, quiere decir que no existen puntos de
+		// interseccion posibles
+		if (d > (s1.getDistancia() + s2.getDistancia())) {
+			return false;
+		}
+
+		// si la distancia es menor a la diferencias de distancias al emisor, quiere
+		// decir que una cisrcunferencia estan dentro de la otra, por lo tando hay
+		// puntos de intersecicon
+		if (d < Math.abs((s1.getDistancia() - s2.getDistancia()))) {
+			return false;
+		}
+
+		// si la distancia es cero, estan en el mismo punto, peor la distancia al emisor
+		// es distinta, no tienen puntos de interseccion
+		if (d == 0 && (s1.getDistancia() != s2.getDistancia())) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public String GetMessage(String... messages) {
+
+		return null;
+	}
+
+	public Trilateracion getInstance() {
+		if (Objects.isNull(instance)) {
+			instance = new Trilateracion();
+		}
+		return instance;
+	}
+
+}

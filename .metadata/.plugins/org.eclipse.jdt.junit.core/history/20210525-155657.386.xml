@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TrilateracionTest" project="comunications" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="util.TrilateracionTest" time="0.016">
+    <testcase name="tercerMensajeUbicacion" classname="util.TrilateracionTest" time="0.013"/>
+    <testcase name="segundoMensajeUbicacion" classname="util.TrilateracionTest" time="0.001"/>
+    <testcase name="primerMensajeUbicacion" classname="util.TrilateracionTest" time="0.002"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,55 @@
+package dto;
+
+/**
+ * 
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class PositionDto {
+
+	/**
+	 * posicion en el eje X
+	 */
+	private Float xPosition;
+
+	/**
+	 * posicion en el eje Y
+	 */
+	private Float yPosition;
+
+	public PositionDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PositionDto(Float xPosition, Float yPosition) {
+		super();
+		this.xPosition = xPosition;
+		this.yPosition = yPosition;
+	}
+
+	public Float getxPosition() {
+		return xPosition;
+	}
+
+	public void setxPosition(Float xPosition) {
+		this.xPosition = xPosition;
+	}
+
+	public Float getyPosition() {
+		return yPosition;
+	}
+
+	public void setyPosition(Float yPosition) {
+		this.yPosition = yPosition;
+	}
+
+	@Override
+	public String toString() {
+		return "PositionDto [xPosition=" + xPosition + ", yPosition=" + yPosition + "]";
+	}
+
+}

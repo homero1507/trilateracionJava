@@ -1,0 +1,27 @@
+package util;
+
+import static org.junit.Assert.*;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class MensajesCifradoTest {
+
+	@Test
+	public void primerTest() {
+		MensajesCifrado.getInstance().GetMessage(new String[] {"este","","","mensaje",""});
+	}
+
+	@Test
+	public void segundoTest() {
+		MensajesCifrado.getInstance().GetMessage(new String[] {"","es","un","",""});
+	}
+
+	@Test
+	public void tercerTest() {
+		MensajesCifrado.getInstance().GetMessage(new String[] {"este","","","","secreto"});
+	}
+
+}

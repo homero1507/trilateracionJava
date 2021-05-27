@@ -1,0 +1,15 @@
+package dto;
+
+import java.io.Serializable;
+
+public class VehiculoEspacial implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 13890808054857187L;
+
+	
+	
+	
+}

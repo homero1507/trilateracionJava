@@ -1,0 +1,24 @@
+package dto;
+
+/**
+ * 
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class PositionDto {
+
+	/**
+	 * posicion en el eje X
+	 */
+	private Float xPosition;
+
+	/**
+	 * posicion en el eje Y
+	 */
+	private Float yPosition;
+
+	
+}

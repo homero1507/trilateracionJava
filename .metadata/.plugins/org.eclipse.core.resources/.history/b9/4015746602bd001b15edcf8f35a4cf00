@@ -1,0 +1,120 @@
+package dto;
+
+import java.io.Serializable;
+import java.util.Arrays;
+
+/**
+ * Clase que describe un objeto Satelite
+ * 
+ * @author antonio vargas
+ * @email avargas@innovaschools.co
+ * @since 24/05/2021
+ * @version 1
+ */
+public class SateliteDto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2056154045722672499L;
+
+	/**
+	 * identificado unico para el satelite
+	 */
+	private Long idSatelite;
+
+	/**
+	 * nombre del satelite
+	 */
+	private String name;
+
+	/**
+	 * descripcion del satelite
+	 */
+	private String description;
+
+	/**
+	 * mensaje recibido por el satelite
+	 */
+	private String[] mensaje;
+
+	/**
+	 * distancia al emisor del mensaje
+	 */
+	private Double distancia;
+
+	/**
+	 * 
+	 */
+	private PositionDto position;
+
+	public SateliteDto(Long idSatelite, String name, String description, Double xPosition, Double yPosition,
+			Double distancia) {
+		super();
+		this.idSatelite = idSatelite;
+		this.name = name;
+		this.description = description;
+		this.position = new PositionDto(xPosition, yPosition);
+	}
+
+	public SateliteDto() {
+		super();
+		this.idSatelite = 0L;
+		this.position = new PositionDto();
+	}
+
+	public Long getIdSatelite() {
+		return idSatelite;
+	}
+
+	public void setIdSatelite(Long idSatelite) {
+		this.idSatelite = idSatelite;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String[] getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String[] mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	public Float getDistancia() {
+		return distancia;
+	}
+
+	public void setDistancia(Float distancia) {
+		this.distancia = distancia;
+	}
+
+	public PositionDto getPosition() {
+		return position;
+	}
+
+	public void setPosition(PositionDto position) {
+		this.position = position;
+	}
+
+	@Override
+	public String toString() {
+		return "SateliteDto [idSatelite=" + idSatelite + ", name=" + name + ", description=" + description
+				+ ", mensaje=" + Arrays.toString(mensaje) + ", distancia=" + distancia + ", position=" + position + "]";
+	}
+
+}

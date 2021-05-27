@@ -1,0 +1,15 @@
+package dto;
+
+/**
+ * Clase que sirve para trazar la trayectoria circular de la posible ubicaicon
+ * del emisor respecto al satelite que recibe el mensaje
+ * 
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class Circunferencia {
+
+}

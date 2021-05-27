@@ -1,0 +1,21 @@
+package facade;
+
+import dto.ResponseDto;
+
+public class SateliteFacadeImp implements SatelitesFacade {
+
+	public String GetMessage(String... messages) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResponseDto getLocation(double distancia) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	
+	
+}

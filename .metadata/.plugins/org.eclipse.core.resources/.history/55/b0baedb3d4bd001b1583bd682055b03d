@@ -1,0 +1,16 @@
+package facade;
+
+import dto.ResponseDto;
+import util.Trilateracion;
+
+public class SateliteFacadeImp implements SatelitesFacade {
+
+	public String GetMessage(String... messages) {
+		return null;
+	}
+
+	public ResponseDto getLocation(double distancia) {
+		return Trilateracion.getInstance().getLocation(distancia);
+	}
+
+}

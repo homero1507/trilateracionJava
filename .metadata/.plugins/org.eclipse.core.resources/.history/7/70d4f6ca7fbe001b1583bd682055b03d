@@ -1,0 +1,18 @@
+package dto;
+
+import java.util.List;
+import java.io.Serializable;
+
+public class RequestDto implements Serializable {
+
+	private List<SateliteRequestDto> satellites;
+
+	public List<SateliteRequestDto> getSatellites() {
+		return satellites;
+	}
+
+	public void setSatellites(List<SateliteRequestDto> satellites) {
+		this.satellites = satellites;
+	}
+
+}

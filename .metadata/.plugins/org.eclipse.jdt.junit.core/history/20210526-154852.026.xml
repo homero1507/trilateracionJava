@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MensajesCifradoTest" project="comunications" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="util.MensajesCifradoTest" time="0.001">
+    <testcase name="primerTest" classname="util.MensajesCifradoTest" time="0.001"/>
+    <testcase name="segundoTest" classname="util.MensajesCifradoTest" time="0.0"/>
+    <testcase name="tercerTest" classname="util.MensajesCifradoTest" time="0.0"/>
+  </testsuite>
+</testrun>

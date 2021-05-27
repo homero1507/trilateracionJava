@@ -1,0 +1,74 @@
+package Servicios;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import dto.RequestDto;
+import dto.ResponseDto;
+import dto.SateliteRequestDto;
+import facade.SateliteFacadeImp;
+import facade.SatelitesFacade;
+
+public class TopSecretHandler implements RequestHandler<Object, String> {
+
+	private LambdaLogger logger;
+	private Gson gson = new Gson();
+
+	public String handleRequest(Object input, Context context) {
+		logger = context.getLogger();
+		ResponseDto response = procesarPeticion(input);
+		String respuestaJSON = gson.toJson(response);
+		logger.log(respuestaJSON);
+		return respuestaJSON;
+	}
+
+	private ResponseDto procesarPeticion(Object input) {
+		ResponseDto response = new ResponseDto();
+
+		Object obj = JSONValue.parse(gson.toJson(input));
+
+		JSONObject jsonObject = (JSONObject) obj;
+		String body = (String) jsonObject.get("body");
+		JSONObject jsonContext = (JSONObject) jsonObject.get("requestContext");
+		JSONObject http = (JSONObject) jsonContext.get("http");
+		String metodoHttp = (String) http.get("method");
+
+		if ("POST".equals(metodoHttp)) {
+			response = procesarPost(body);
+		} else {
+			response.setCode("403");
+		}
+
+		return response;
+	}
+
+	private ResponseDto procesarPost(String body) {
+
+		logger.log(body);
+
+		ResponseDto response = new ResponseDto();
+
+		RequestDto satelitesRequest = gson.fromJson(body, RequestDto.class);
+
+		SatelitesFacade sf = new SateliteFacadeImp();
+
+		satelitesRequest.getSatellites().forEach(sateliteRequest -> {
+			ResponseDto res = sf.getLocation(sateliteRequest.getDistance());
+			response.setCode(res.getCode());
+			response.setPosition(res.getPosition());
+			response.setMensaje(sf.GetMessage(sateliteRequest.getMenssage()));
+		});
+
+		return response;
+	}
+
+}

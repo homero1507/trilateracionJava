@@ -1,0 +1,11 @@
+package dto;
+
+import java.io.Serializable;
+
+public class SateliteRequestDto implements Serializable{
+
+	private String name;
+	private Double distance;
+	private String[] menssage;
+	
+}

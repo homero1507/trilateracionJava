@@ -1,0 +1,30 @@
+package dto;
+
+public class Satelite {
+
+	/**
+	 * identificado unico para el satelite
+	 */
+	private Long idSatelite;
+
+	/**
+	 * nombre del satelite
+	 */
+	private String name;
+
+	/**
+	 * descripcion del satelite
+	 */
+	private String description;
+
+	/**
+	 * posicion en el eje X
+	 */
+	private Float xPosition;
+
+	/**
+	 * posicion en el eje Y
+	 */
+	private Float yPosition;
+
+}

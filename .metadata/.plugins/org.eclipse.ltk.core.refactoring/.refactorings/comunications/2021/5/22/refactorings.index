@@ -1,0 +1,13 @@
+1621890954228	Copy package
+1621890957177	Delete element
+1621891608836	Rename type 'VehiculoSpacil'
+1621893433116	Delete element
+1621896733543	Rename type 'Satelite'
+1621899965216	Delete element
+1621948526798	Delete element
+1621948543057	Delete element
+1621951732367	Extract method 'validarInfoSatelites'
+1621962271783	Extract method 'asignarInfoSatelite'
+1621984397660	Move compilation unit
+1622075801317	Extract method 'errorCalculoPosition'
+1622082744273	Delete element

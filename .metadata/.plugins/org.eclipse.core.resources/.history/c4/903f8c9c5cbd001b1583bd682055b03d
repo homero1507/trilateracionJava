@@ -1,0 +1,15 @@
+package enums;
+
+import dto.SateliteDto;
+
+public enum SatelitesEnum {
+
+	INSTANCE;
+
+	private SateliteDto satelite;
+
+	private SatelitesEnum(String name, double x, double y, double distancia) {
+		this.satelite = new SateliteDto(name, "", x, y, distancia);
+	}
+
+}

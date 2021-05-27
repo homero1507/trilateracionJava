@@ -1,0 +1,33 @@
+package util;
+
+public class MensajesCifrado {
+
+	/**
+	 * Obtiene el mensaje cifrado
+	 * 
+	 * @param mensajes
+	 * @return
+	 */
+	public static String obtenerMensaje(List<String[]> mensajes) {
+		String[] listMsj = new String[lengthMaxList(mensajes)];
+		String msjCifrado = "";
+		for (String[] msj : mensajes) {
+			for (int i = 0; i < msj.length; i++) {
+				if (!msj[i].equals("")) {
+					listMsj[i] = msj[i];
+				}
+			}
+		}
+		for (int i = 0; i < listMsj.length; i++) {
+			if (Objects.isNull(listMsj[i])) {
+				throw new IllegalArgumentException("No se puede determinar el mensaje.");
+			} else {
+				msjCifrado += (i > 0 ? " " : "") + listMsj[i];
+			}
+
+		}
+
+		return msjCifrado;
+	}
+
+}

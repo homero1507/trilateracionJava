@@ -1,0 +1,67 @@
+package dto;
+
+import java.io.Serializable;
+
+public class VehiculoEspacial implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 13890808054857187L;
+
+	/**
+	 * nombre del satelite
+	 */
+	private String name;
+
+	/**
+	 * descripcion del satelite
+	 */
+	private String description;
+
+	/**
+	 * posicion en el eje X
+	 */
+	private Float xPosition;
+
+	/**
+	 * posicion en el eje Y
+	 */
+	private Float yPosition;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Float getxPosition() {
+		return xPosition;
+	}
+
+	public void setxPosition(Float xPosition) {
+		this.xPosition = xPosition;
+	}
+
+	public Float getyPosition() {
+		return yPosition;
+	}
+
+	public void setyPosition(Float yPosition) {
+		this.yPosition = yPosition;
+	}
+
+	
+	
+	
+}

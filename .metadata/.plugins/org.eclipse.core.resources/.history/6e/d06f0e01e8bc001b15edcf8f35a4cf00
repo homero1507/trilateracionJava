@@ -1,0 +1,30 @@
+package util;
+
+import java.util.Map;
+
+import dto.PositionDto;
+import dto.SateliteDto;
+
+/**
+ * Clase que aplica el algoritmo de trilateracion para calcular la posicion de
+ * un objeto
+ * 
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class Trilateracion {
+
+	/**
+	 * map que contendra los satelites disponibles
+	 */
+	private Map<String, SateliteDto> satelites;
+
+	public PositionDto getLocation(Float... distancias) {
+
+		return null;
+	}
+
+}

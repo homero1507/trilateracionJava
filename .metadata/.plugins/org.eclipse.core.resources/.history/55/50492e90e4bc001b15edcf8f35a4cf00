@@ -1,0 +1,15 @@
+package util;
+
+/**
+ * Clase que aplica el algoritmo de trilateracion para calcular la posicion de un objeto
+ * @author antonio vargas
+ * @email inganthonyvargas@gmail.com
+ * @since 24/05/2021
+ * @version 1
+ *
+ */
+public class Trilateracion {
+
+	
+	
+}
